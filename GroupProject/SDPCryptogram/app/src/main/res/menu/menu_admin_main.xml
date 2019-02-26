@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.gatech.seclass.sdpcryptogram.AdminMainActivity">
+    <item
+        android:id="@+id/admin_menuitem_logout"
+        android:orderInCategory="100"
+        android:title="@string/admin_menu_logout"
+        app:showAsAction="never" />
+</menu>

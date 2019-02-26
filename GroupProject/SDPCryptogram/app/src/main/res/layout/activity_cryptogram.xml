@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="edu.gatech.seclass.sdpcryptogram.CryptogramActivity">
+
+
+
+        <EditText
+            android:id="@+id/cryptogram_ciphertext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginStart="32dp"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:longClickable="false"
+            android:text="Default Cipher Text"
+            android:textIsSelectable="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="0dp" />
+
+    <EditText
+        android:id="@+id/cryptogram_currentsolution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="0dp"
+        android:clickable="false"
+        android:contextClickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="none"
+        android:longClickable="false"
+        android:text="Default Current Solution"
+        android:textIsSelectable="false"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cryptogram_ciphertext" />
+
+    <Button
+            android:id="@+id/cryptogram_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+        android:layout_marginLeft="64dp"
+            android:layout_marginStart="64dp"
+            android:onClick="onCancel"
+            android:text="Cancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/cryptogram_button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:onClick="onSubmit"
+            android:text="Submit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/cryptogram_solved_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="49dp"
+            android:text="SOLVED"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/keyMatrixLayout" />
+
+    <LinearLayout
+        android:id="@+id/keyMatrixLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/cryptogram_currentsolution">
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_11"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="A"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_A"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_12"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="B"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_B"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_13"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="C"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_C"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_14"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="D"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_D"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_15"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="E"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_E"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_16"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_F"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="F"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_F"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_17"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_21"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="G"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_G"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_22"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="H"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_H"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_23"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_I"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="I"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_I"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_24"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_J"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="J"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_J"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_25"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_K"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="K"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_K"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_26"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="L"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_L"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_27"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_31"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="M"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_M"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_32"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_N"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="N"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_N"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_33"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_O"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="O"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_O"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_34"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_P"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="P"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_P"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_35"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_Q"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="Q"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_Q"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_36"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="R"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_R"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_37"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_41"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_S"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="S"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_S"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_42"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_T"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="T"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_T"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_43"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_U"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="U"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_U"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_44"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_V"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="V"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_V"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_45"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_W"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="W"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_W"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_46"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="X"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_X"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_47"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_51"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_Y"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="Y"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_Y"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_52"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_textlabel_Z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0"
+                android:fontFamily="monospace"
+                android:text="Z"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cryptogram_textinput_Z"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:ems="10"
+                android:inputType="textNoSuggestions"
+                android:maxLength="1"
+                android:privateImeOptions="nm"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_53"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+
+            <TextView
+                android:id="@+id/cryptogram_attempts_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_weight="0"
+                android:text="Attempts: "
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cryptogram_attempts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="0"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/cryptogram_verticaldivider_54"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@android:color/darker_gray"
+                app:srcCompat="?attr/dividerVertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cryptogram_horizontaldivider_6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:srcCompat="?attr/dividerHorizontal" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+

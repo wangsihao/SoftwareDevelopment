@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/row_admin_playername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:text="@string/row_admin_name_filler"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/row_admin_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.68"
+        android:paddingStart="8dp"
+        android:text="@string/row_admin_username_filler"
+        android:textSize="12sp" />
+
+</LinearLayout>
